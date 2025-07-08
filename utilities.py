@@ -44,14 +44,33 @@ def read_pt(pt_path):
     return pt_array
 
 
-def to_int(pt: np.ndarray, scale: float = 1e6) -> np.ndarray:
+def to_int_fuct(pt: np.ndarray, scale: float = 1e6) -> np.ndarray:
     """
     将 float16 np.ndarray 安全地放大为 int32，默认放大倍率为1e8
     使用 float32 进行缩放以避免精度问题。
     """
     return np.round(pt.astype(np.float32) * scale).astype(np.int32)
 
+def to_int(pt: np.ndarray, scale: float = 1e6) -> np.ndarray:
+    try:
+        return to_int_fuct(pt=pt,scale=scale)
+    except Exception as e:
+        print(e)
+        return None
+    
+def scan_csv(base_dir:str):
+    '''
+    扫描特定盘下所有的.pt文件，然后返回一个整理好的绝对路径列表
+    '''
+    avail_csv = []
 
+    for file in os.listdir(base_dir):
+        # if file.endswith("pt"):
+        if file.endswith(".csv"):
+            file_path = os.path.join(base_dir,file)
+            avail_csv.append(file_path)
+
+    return avail_csv
 
 def test():
 #     base_dir = "D:\\NYU_Files\\2025 SPRING\\Summer_Research\\新\\PYTHON\\QWEN\\COMPRESS_COMPETITION\\packed\\"
