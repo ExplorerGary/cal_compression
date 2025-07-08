@@ -6,7 +6,7 @@
 - `cal_compression/`
     - `README.md`：项目说明文档
     - `run.py`：实现.pt数据压缩与压缩率计算的核心模块
-    - `untilities.py`：包含各类工具函数
+    - `untilities.py`：包含各类工具函数 -- 现已支持使用**_fuct包裹用try-except捕获异常
     - `EG_encoding.py`：修改自吴俊师兄的代码，使用一位 signbit 表示正负
     - `ExpGolombCode.py`：吴俊师兄的源代码
     - `ErrorLogger.py`：记录异常的工具函数
