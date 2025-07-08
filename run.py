@@ -5,6 +5,7 @@ import numpy as np
 from concurrent.futures import ProcessPoolExecutor, as_completed
 import csv
 from tqdm import tqdm
+import multiprocessing
 
 from cal_ratio import cal_ratio
 from utilities import scan_pt
@@ -16,6 +17,11 @@ from utilities import scan_pt
 
 
 def main():
+
+
+    print("total cpu:", multiprocessing.cpu_count())
+    max_workers=max(4,multiprocessing.cpu_count()-2)
+    print(f"working on: {max_workers}")
     if not torch.cuda.is_available():
         print("local test")
     else:
@@ -38,7 +44,7 @@ def main():
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
 
-        with ProcessPoolExecutor(max_workers=4) as executor:
+        with ProcessPoolExecutor(max_workers=max_workers) as executor:
             k = 0 # 或者你可以根据需要设置k的值
             futures = [executor.submit(cal_ratio, path, k) for path in avail_pt]
 
