@@ -9,6 +9,7 @@
     - `untilities.py`：包含各类工具函数
     - `EG_encoding.py`：修改自吴俊师兄的代码，使用一位 signbit 表示正负
     - `ExpGolombCode.py`：吴俊师兄的源代码
+    - `ErrorLogger.py`：记录异常的工具函数
 
 
 
