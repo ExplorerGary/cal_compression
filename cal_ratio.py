@@ -32,7 +32,7 @@ def cal_ratio(pt_path:str,k:int=0):
     pt_array , byte_theory, byte_os  = preprocess(pt_path=pt_path)
     
     EG = ExpGolombEncoding(k=k)
-    byte_encoded = len(EG.streamEncode(pt_array))
+    byte_encoded = len(EG.streamEncode(pt_array))/8
     
     ratio_theory = (byte_theory-byte_encoded)/byte_theory
     ratio_os = (byte_os-byte_encoded)/byte_os
