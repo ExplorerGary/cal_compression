@@ -34,6 +34,9 @@ def main():
     
     print(f"{len(avail_pt)} files found...")
 
+    scale = 1e6
+    print(f"scale: {scale}")
+    
     csv_path = os.path.join(base_dir, "004_COMPRESSION_RESULTS_PROCESSPOOL.csv")
     fieldnames = ["name", "byte_theory", "byte_os", "byte_encoded", "ratio_theory", "ratio_os"]
 
@@ -46,7 +49,7 @@ def main():
 
         with ProcessPoolExecutor(max_workers=max_workers) as executor:
             k = 0 # 或者你可以根据需要设置k的值
-            futures = [executor.submit(cal_ratio, path, k) for path in avail_pt]
+            futures = [executor.submit(cal_ratio, path, k, scale) for path in avail_pt]
 
             for future in tqdm(as_completed(futures), total=len(futures)):
                 try:
