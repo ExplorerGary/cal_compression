@@ -1,0 +1,19 @@
+# README
+## 项目简介
+本文件夹包含用于日历数据压缩与处理的辅助模块，旨在提升日历数据的存储与处理效率。主要功能包括数据压缩、解压缩、格式转换等。
+
+## 文件结构
+- `cal_compression/`
+    - `README.md`：项目说明文档
+    - `run.py`：实现.pt数据压缩与压缩率计算的核心模块
+    - `untilities.py`：包含各类工具函数
+    - `EG_encoding.py`：修改自吴俊师兄的代码，使用一位 signbit 表示正负
+    - `ExpGolombCode.py`：吴俊师兄的源代码
+
+
+
+## 贡献
+欢迎提交 issue 或 pull request 以改进本项目。
+
+## 许可证
+本项目遵循 MIT 许可证。
